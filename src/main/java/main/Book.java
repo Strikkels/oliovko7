@@ -13,6 +13,7 @@ public abstract class Book {
         this.copies = copies;
     }
     
+    public abstract int getCopies();
     public abstract String getTitle();
     public abstract void displayInfo();
     public abstract String categorize();

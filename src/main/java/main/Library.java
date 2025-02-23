@@ -14,11 +14,12 @@ public class Library {
     }
 
     public void listBooks() {
-        int n = this.books.size();
+        int n = 0;
         
         for (Book book : this.books) {
             book.displayInfo();
             System.out.println("Kirjan kategoria: " + book.categorize());
+            n += book.getCopies();
         }
         System.out.println("Kirjojen määrä kirjastossa on: " + n);
     }

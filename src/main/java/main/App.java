@@ -44,24 +44,41 @@ public class App
                         library.listBooks();
                         break;
                     case 3:
-                        System.out.println("Syötä lainattavan kirjan nimi: ");
+                        Boolean bookBorrowed = false;
+                        System.out.println("Anna lainattavan kirjan nimi: ");
                         String borrowTitle = sc.nextLine();
                         for(Book book : library.getBooks()){
                             if(book.getTitle().equals(borrowTitle)){
-                                //book.borrow();
+                                if(book instanceof Borrowable){
+                                    ((Borrowable) book).borrow();
+                                    bookBorrowed = true;
+                                    break;
+                                }
                             }
+                        }
+                        if(!bookBorrowed){
+                            System.out.println("Kirjaa ei löytynyt tai sitä ei voi lainata.");
                         }
                         break;
                     case 4:
-                        System.out.println("Syötä palautettavan kirjan nimi: ");
+                        Boolean bookReturned = false;
+                        System.out.println("Anna palautettavan kirjan nimi: ");
                         String returnTitle = sc.nextLine();
                         for(Book book : library.getBooks()){
                             if(book.getTitle().equals(returnTitle)){
-                                //book.returnBook();
+                                if(book instanceof Borrowable){
+                                    ((Borrowable) book).returnBook();
+                                    bookReturned = true;
+                                    break;
+                                }
                             }
+                        }
+                        if(!bookReturned){
+                            System.out.println("Kirjaa ei löytynyt tai sitä ei voi palauttaa.");
                         }
                         break;
                     case 0:
+                        System.out.println("Kiitos ohjelman käytöstä.");
                         exit = true;
                         break;
                     default:

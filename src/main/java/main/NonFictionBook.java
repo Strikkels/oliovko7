@@ -8,6 +8,11 @@ public class NonFictionBook extends Book {
     public String getTitle() {
         return this.title;
     }
+
+    public int getCopies() {
+        return this.copies;
+    }
+    
     public void displayInfo() {
         System.out.println("Nimi: " + this.title + ", Kirjailija: " + this.author + ", Sivut: " + this.pages + ", Määrä: " + this.copies);
     }
